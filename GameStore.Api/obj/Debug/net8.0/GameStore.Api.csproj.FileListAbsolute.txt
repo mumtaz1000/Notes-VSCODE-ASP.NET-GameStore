@@ -23,3 +23,4 @@ D:\codes\coding_practice\DonetPrograms\GameStore\GameStore.Api\obj\Debug\net8.0\
 D:\codes\coding_practice\DonetPrograms\GameStore\GameStore.Api\obj\Debug\net8.0\GameStore.Api.pdb
 D:\codes\coding_practice\DonetPrograms\GameStore\GameStore.Api\obj\Debug\net8.0\GameStore.Api.genruntimeconfig.cache
 D:\codes\coding_practice\DonetPrograms\GameStore\GameStore.Api\obj\Debug\net8.0\ref\GameStore.Api.dll
+D:\codes\coding_practice\DonetPrograms\GameStore\GameStore.Api\obj\Debug\net8.0\GameStore.Api.sourcelink.json
