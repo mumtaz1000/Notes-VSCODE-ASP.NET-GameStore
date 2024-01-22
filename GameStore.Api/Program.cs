@@ -26,7 +26,10 @@ List<Game> games = new()
     {
         Id=3,
         Name="FIFA 23",
-        Genre="Sports",
+        Genre=
+
+
+"Sports",
         Price=69.99M,
         ReleaseDate=new DateTime(2022, 9, 27),
         ImageUri="https://placehold.co/100"
@@ -35,10 +38,11 @@ List<Game> games = new()
 
 var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
+var group = app.MapGroup("/games");
 
-app.MapGet("/games", () => games);
+group.MapGet("/", () => games);
 
-app.MapGet("/games/{id}", (int id) => 
+group.MapGet("/{id}", (int id) => 
     {
         Game? game = games.Find(game => game.Id == id);
 
@@ -51,7 +55,7 @@ app.MapGet("/games/{id}", (int id) =>
     })
     .WithName(GetGameEnpointName);
 
-app.MapPost("/games", (Game game)=>
+group.MapPost("/", (Game game)=>
     {
         game.Id = games.Max(game => game.Id) + 1;
         games.Add(game);
@@ -59,7 +63,7 @@ app.MapPost("/games", (Game game)=>
         return Results.CreatedAtRoute(GetGameEnpointName, new {id = game.Id}, game);
     });
 
-app.MapPut("/games/{id}", (int id, Game updatedGame)=>
+group.MapPut("/{id}", (int id, Game updatedGame)=>
     {
          Game? existingGame = games.Find(game => game.Id == id);
 
@@ -77,7 +81,7 @@ app.MapPut("/games/{id}", (int id, Game updatedGame)=>
         return Results.NoContent();
     });
 
-app.MapDelete("/games/{id}", (int id)=>
+group.MapDelete("/{id}", (int id)=>
     {
          Game? game = games.Find(game => game.Id == id);
 
